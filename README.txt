@@ -3,7 +3,9 @@ Comparable GOST for GOPL
 
   type Ordered interface 
 
-  func Sort[T Ordered](array []T) ([]T) {
+  func Ascending[T Ordered](array []T) ([]T) {
+
+  func Descending[T Ordered](array []T) ([]T) {
 
 
 Review
@@ -21,8 +23,6 @@ Review
     ./sort_test.go:61:7: cannot use vector (variable of type TestList) as []Comparable value in argument to Sort
     FAIL	github.com/syntelos/go-sort [build failed]
 
-  A syntactic dissonance which remains unclear and
-  unresolved.
 
   The dynamical semantics required are available via
   parametric type abstraction, represented by the "Ordered"
