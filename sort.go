@@ -4,15 +4,14 @@
  */
 package sort
 
-type Comparable interface {
-
-	Compare(Comparable) int
+type Ordered interface {
+	~int | ~uint | ~string
 }
 
-func Sort(array []Comparable) ([]Comparable) {
+func Sort[T Ordered](array []T) ([]T) {
 
 	var a, b int = 0, len(array)
-	var x, y Comparable
+	var x, y T
 	/*
 	 * Partition sort adapted from GOST
 	 */
@@ -23,7 +22,7 @@ func Sort(array []Comparable) ([]Comparable) {
 			x = array[j]
 			y = array[j-1]
 
-			if 0 > x.Compare(y) {
+			if x < y {
 
 				array[j] = y
 				array[j-1] = x
