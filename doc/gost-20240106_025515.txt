@@ -1,0 +1,32 @@
+https://groups.google.com/g/golang-nuts/c/X6D-wB8pVJI
+
+[RFC] Syntactic Dissonance
+
+  Hi,
+
+  Here's a case of "type dissonance" I don't understand.  Why should it be?
+
+    https://github.com/syntelos/go-sort
+
+  An interface type not passing through a static public package function that employs the interface.
+
+    type Comparable interface {
+
+      Compare(Comparable) int
+    }
+
+    func Sort(array []Comparable) ([]Comparable)
+
+  With go-1.20.12:
+
+    $ go test
+    # github.com/syntelos/go-sort [github.com/syntelos/go-sort.test]
+    ./sort_test.go:61:7: cannot use vector (variable of type TestList) as []Comparable value in argument to Sort
+    FAIL    github.com/syntelos/go-sort [build failed]
+
+  Any comments?
+
+  Best,
+
+  John
+
